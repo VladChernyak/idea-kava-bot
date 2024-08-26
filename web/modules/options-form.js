@@ -215,7 +215,7 @@ const showConfirmDialog = (options) => {
 
   dialogListContainer.append(...items);
   dialogSendButton.addEventListener("click", () => {
-    sendCheckedData();
+    sendCheckedData(dialogContainer);
     showDialogSuccessResult(dialogContainer);
   });
 

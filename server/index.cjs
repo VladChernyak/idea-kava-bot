@@ -1,7 +1,7 @@
 const TelegramBot = require("node-telegram-bot-api");
 
-const token = "7544191999:AAHFB7Zaxt3uJ_rCnsqsaj2aWdm4stiy9mg";
-const webAppUrl = "https://main--warm-chebakia-f79754.netlify.app/";
+const token = "7205301334:AAGAEYiay3EuNh8E77XejyslF9dCLVHVW6w";
+const webAppUrl = "https://aesthetic-moonbeam-59a5ad.netlify.app/";
 
 const bot = new TelegramBot(token, { polling: true });
 
@@ -18,7 +18,7 @@ bot.on("message", async (msg) => {
   if (msg.text === "/start") {
     await bot.sendMessage(
       chatId,
-      "Вітаємо 👋 \nЩоб дізнатися аклуальні ціні на пунктах прийому запустіть додаток.",
+      "Доброго дня 👋 \nЗапустіть додаток, щоб обрати пункти відсутні на складі",
       {
         reply_markup: {
           inline_keyboard: [
