@@ -119,6 +119,7 @@ const sendCheckedData = (dialog) => {
   );
 
   window.Telegram.WebApp.sendData(JSON.stringify(checkedData));
+  setTimeout(() => Telegram.WebApp.close(), 2000);
 };
 
 const showDialogSuccessResult = (dialog) => {

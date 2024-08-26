@@ -5,23 +5,29 @@ const webAppUrl = "https://aesthetic-moonbeam-59a5ad.netlify.app/";
 
 const bot = new TelegramBot(token, { polling: true });
 
-bot.onText(/\/echo (.+)/, (msg, match) => {
-  const chatId = msg.chat.id;
-  const resp = match[1];
+bot.on("web_app_data", (msg) => {
+  const userData = msg.web_app_data.data;
+  const parsedData = JSON.parse(userData);
+  const list = parsedData.map((item) => `- ${item}`);
 
-  bot.sendMessage(chatId, resp);
+  bot.sendMessage(
+    -1002148657238,
+    `На складі закінчуються:\n\n${list.join("\n")}`
+  );
 });
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
 
+  await bot.sendMessage(chatId, chatId);
+
   if (msg.text === "/start") {
     await bot.sendMessage(
       chatId,
-      "Доброго дня 👋 \nЗапустіть додаток, щоб обрати пункти відсутні на складі",
+      "Доброго дня 👋 \nЗапустіть додаток, щоб обрати пункти відсутні на складі !",
       {
         reply_markup: {
-          inline_keyboard: [
+          keyboard: [
             [
               {
                 text: "Відкрити додаток",
@@ -33,8 +39,4 @@ bot.on("message", async (msg) => {
       }
     );
   }
-});
-
-bot.on("web_app_data", (data) => {
-  console.log(data);
 });

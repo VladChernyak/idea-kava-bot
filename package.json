@@ -10,6 +10,7 @@
     "server": "nodemon server/index.cjs"
   },
   "devDependencies": {
+    "pino": "^9.3.2",
     "vite": "^5.4.1"
   },
   "dependencies": {
