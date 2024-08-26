@@ -1,0 +1,366 @@
+@font-face {
+  font-family: Open Sans;
+  font-weight: 300;
+  src: url("./fonts/OpenSans-Light.ttf");
+}
+
+@font-face {
+  font-family: Open Sans;
+  font-weight: 400;
+  src: url("./fonts/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: Open Sans;
+  font-weight: 700;
+  src: url("./fonts/OpenSans-Bold.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  font-family: Open Sans, sans-serif;
+  color: #333;
+}
+
+#app {
+  position: relative;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  max-width: 500px;
+  line-height: 1.3;
+}
+
+.app-preloader {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-bg);
+}
+
+.app-preloader-logo {
+  width: 300px;
+}
+
+.app-preloader-logo path {
+  fill: transparent;
+  stroke: var(--color-primary);
+  stroke-width: 1;
+  stroke-dasharray: 1730;
+  stroke-dashoffset: 1730;
+  animation: logo 2s forwards;
+}
+
+@keyframes logo {
+  70% {
+    fill: transparent;
+    stroke-dashoffset: 0;
+    stroke: var(--color-primary);
+  }
+
+  100% {
+    fill: var(--color-primary);
+    stroke: transparent;
+    stroke-dashoffset: 0;
+  }
+}
+
+.app-content {
+  height: 100%;
+}
+
+.options-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px;
+  opacity: 0;
+}
+
+.options-form legend {
+  padding: 20px 10px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: var(--color-primary);
+}
+
+.options-form fieldset {
+  border: none;
+  overflow-y: auto;
+}
+
+.options-form fieldset > div {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+  user-select: none;
+  transition: border-color 100ms;
+}
+
+.checkbox:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.checkbox input {
+  display: none;
+}
+
+.checkbox span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-right: 20px;
+}
+
+.checkbox .checkbox__box {
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border: 2px solid var(--color-primary);
+  border-radius: 6px;
+  /* transition: background-color 100ms, border-color 100ms; */
+}
+
+.checkbox .checkbox__box svg {
+  transform: scale(0);
+}
+
+.checkbox:has(input:checked) {
+  border-color: var(--color-secondary);
+}
+
+.checkbox input:checked ~ .checkbox__box {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+
+.checkbox input:checked ~ .checkbox__box svg {
+  animation: check 200ms forwards;
+}
+
+@keyframes check {
+  70% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.options-form__submit,
+.confirm-dialog__send {
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-top: auto;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  font-family: inherit;
+  border-radius: 10px;
+  background-color: var(--color-secondary);
+  transition: background-color 300ms;
+}
+
+.options-form__submit:not([disabled]):active,
+.confirm-dialog__send:not([disabled]):active {
+  opacity: 0.7;
+}
+
+.options-form__submit[disabled],
+.confirm-dialog__send[disabled] {
+  background-color: #c3c3c3;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  margin-bottom: 12px;
+  color: var(--color-primary);
+}
+
+.confirm-dialog {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+}
+
+.confirm-dialog__content {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  width: 100%;
+  min-height: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--color-bg);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  opacity: 0;
+  transform: translateY(-20px);
+  overflow: hidden;
+}
+
+.confirm-dialog__content h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.confirm-dialog__content ul {
+  overflow-y: auto;
+  max-height: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.confirm-dialog__content ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  list-style: none;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+.confirm-dialog__content ul li svg {
+  width: 25px;
+}
+
+.confirm-dialog__content ul li svg path {
+  stroke: red;
+}
+
+.svg-success {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  vertical-align: top;
+  opacity: 1;
+  overflow: visible;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+
+  .success-tick {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #ffffff;
+    stroke-dasharray: 15px, 15px;
+    stroke-dashoffset: -14px;
+    animation: success-tick 450ms ease 1400ms forwards;
+  }
+
+  .success-circle-outline {
+    fill: none;
+    stroke-width: 1px;
+    stroke: #81c038;
+    stroke-dasharray: 72px, 72px;
+    stroke-dashoffset: 72px;
+    animation: success-circle-outline 300ms ease-in-out 800ms forwards;
+    opacity: 0;
+  }
+
+  .success-circle-fill {
+    fill: #81c038;
+    stroke: none;
+    opacity: 0;
+    animation: success-circle-fill 300ms ease-out 1100ms forwards;
+  }
+}
+
+@media screen and (-ms-high-contrast: active),
+  screen and (-ms-high-contrast: none) {
+  .success-tick {
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    animation: none;
+    opacity: 1;
+  }
+
+  .success-circle-outline {
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    animation: none;
+    opacity: 1;
+  }
+
+  .success-circle-fill {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+@keyframes success-tick {
+  0% {
+    stroke-dashoffset: 16px;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 31px;
+    opacity: 1;
+  }
+}
+
+@keyframes success-circle-outline {
+  0% {
+    stroke-dashoffset: 72px;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes success-circle-fill {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
