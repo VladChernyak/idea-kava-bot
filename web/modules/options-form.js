@@ -114,7 +114,9 @@ const closeDialogAnimation = (dialog) => {
 
 const sendCheckedData = (dialog) => {
   const checkedItems = dialog.querySelectorAll("#confirm-dialog-list li");
-  const checkedData = checkedItems.map((item) => item.dataset.value);
+  const checkedData = Array.from(checkedItems).map(
+    (item) => item.dataset.value
+  );
 
   window.Telegram.WebApp.sendData(JSON.stringify(checkedData));
 };
