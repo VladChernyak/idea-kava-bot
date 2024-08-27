@@ -54,25 +54,25 @@ body {
 }
 
 .app-preloader-logo path {
-  fill: transparent;
+  /* fill: transparent;
   stroke: var(--color-primary);
   stroke-width: 1;
   stroke-dasharray: 1730;
-  stroke-dashoffset: 1730;
-  animation: logo 2s forwards;
+  stroke-dashoffset: 1730; */
+  fill: var(--color-primary);
+  opacity: 0;
+  animation: logo 1s forwards;
 }
 
 @keyframes logo {
-  70% {
+  /* 70% {
     fill: transparent;
     stroke-dashoffset: 0;
     stroke: var(--color-primary);
-  }
+  } */
 
   100% {
-    fill: var(--color-primary);
-    stroke: transparent;
-    stroke-dashoffset: 0;
+    opacity: 1;
   }
 }
 

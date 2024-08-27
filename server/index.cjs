@@ -16,6 +16,43 @@ bot.on("web_app_data", (msg) => {
   );
 });
 
+bot.onText(/\/cleaningmanual/, (msg) => {
+  const chatId = msg.chat.id;
+
+  const options = {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "🔗 Відкрити",
+            url: "http://ideakava.place/cleaning-manual.pdf",
+          },
+        ],
+      ],
+    },
+  };
+  bot.sendMessage(chatId, "Інструкція з прибирання:", options);
+});
+
+bot.onText(/\/tomanual/, (msg) => {
+  const chatId = msg.chat.id;
+
+  const options = {
+    reply_markup: {
+      inline_keyboard: [
+        [
+          {
+            text: "🔗 Відкрити",
+            url: "http://ideakava.place/to-manual.pdf",
+          },
+        ],
+      ],
+    },
+  };
+
+  bot.sendMessage(chatId, "Інструкція ТО:", options);
+});
+
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
 
