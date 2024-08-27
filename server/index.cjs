@@ -11,7 +11,7 @@ bot.on("web_app_data", (msg) => {
   const list = parsedData.map((item) => `✖️ ${item}`);
 
   bot.sendMessage(
-    -1002148657238,
+    -4209155045,
     `⚠️ На складі закінчуються:\n\n${list.join("\n")}`
   );
 });
