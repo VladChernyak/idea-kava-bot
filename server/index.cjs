@@ -8,7 +8,7 @@ const bot = new TelegramBot(token, { polling: true });
 bot.on("web_app_data", (msg) => {
   const userData = msg.web_app_data.data;
   const parsedData = JSON.parse(userData);
-  const list = parsedData.map((item) => `• ${item}`);
+  const list = parsedData.map((item) => `✖️ ${item}`);
 
   bot.sendMessage(
     -1002148657238,
@@ -22,7 +22,7 @@ bot.on("message", async (msg) => {
   if (msg.text === "/start") {
     await bot.sendMessage(
       chatId,
-      "Доброго дня 👋 \nЗапустіть додаток, щоб обрати пункти відсутні на складі !",
+      "Доброго дня 👋 \nЗапустіть додаток, щоб обрати пункти відсутні на складі",
       {
         reply_markup: {
           keyboard: [

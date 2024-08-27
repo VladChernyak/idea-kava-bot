@@ -218,7 +218,7 @@ const showConfirmDialog = (options) => {
   dialogListContainer.append(...items);
   dialogSendButton.addEventListener("click", () => {
     showDialogSuccessResult(dialogContainer);
-    setTimeout(() => sendCheckedData(dialogContainer), 2000);
+    setTimeout(() => sendCheckedData(dialogContainer), 2200);
   });
 
   appContent.append(dialogContainer);
@@ -247,7 +247,7 @@ export const initForm = () => {
     showConfirmDialog(values);
   };
 
-  form.onchange = (e) => {
+  form.onchange = () => {
     const submitButton = form.querySelector("[type=submit]");
     const hasChecked = Array.from(form.elements).some(
       (element) => element.checked
