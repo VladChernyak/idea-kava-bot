@@ -8,18 +8,16 @@ const bot = new TelegramBot(token, { polling: true });
 bot.on("web_app_data", (msg) => {
   const userData = msg.web_app_data.data;
   const parsedData = JSON.parse(userData);
-  const list = parsedData.map((item) => `- ${item}`);
+  const list = parsedData.map((item) => `• ${item}`);
 
   bot.sendMessage(
     -1002148657238,
-    `На складі закінчуються:\n\n${list.join("\n")}`
+    `⚠️ На складі закінчуються:\n\n${list.join("\n")}`
   );
 });
 
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
-
-  await bot.sendMessage(chatId, chatId);
 
   if (msg.text === "/start") {
     await bot.sendMessage(

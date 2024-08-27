@@ -119,7 +119,6 @@ const sendCheckedData = (dialog) => {
   );
 
   window.Telegram.WebApp.sendData(JSON.stringify(checkedData));
-  // setTimeout(() => Telegram.WebApp.close(), 2000);
 };
 
 const showDialogSuccessResult = (dialog) => {
@@ -218,8 +217,8 @@ const showConfirmDialog = (options) => {
 
   dialogListContainer.append(...items);
   dialogSendButton.addEventListener("click", () => {
-    sendCheckedData(dialogContainer);
     showDialogSuccessResult(dialogContainer);
+    setTimeout(() => sendCheckedData(dialogContainer), 2000);
   });
 
   appContent.append(dialogContainer);
