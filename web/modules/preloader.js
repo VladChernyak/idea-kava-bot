@@ -6,7 +6,7 @@ export const removePreloader = () => {
   return new Promise((resolve) => {
     gsap.to(preloader, {
       duration: 0.3,
-      delay: 1.5,
+      delay: 2,
       opacity: 0,
       onComplete: () => {
         resolve();

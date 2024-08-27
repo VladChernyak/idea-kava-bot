@@ -61,7 +61,7 @@ body {
   stroke-dashoffset: 1730; */
   fill: var(--color-primary);
   opacity: 0;
-  animation: logo 1s forwards;
+  animation: logo 1s 500ms forwards;
 }
 
 @keyframes logo {
